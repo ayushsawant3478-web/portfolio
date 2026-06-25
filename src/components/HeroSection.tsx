@@ -20,7 +20,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="relative w-full h-screen flex flex-col justify-between overflow-hidden bg-[#0C0C0C] px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 hero-section"
+      className="relative w-full h-screen flex flex-col justify-start overflow-hidden bg-[#0C0C0C] px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 hero-section"
       style={{
         paddingTop: 'clamp(60px, 8vh, 80px)'
       }}

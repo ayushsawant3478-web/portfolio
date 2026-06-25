@@ -126,7 +126,7 @@ export default function CertificationsSection() {
         {/* Section Heading */}
         <FadeIn delay={0} y={40} className="w-full text-center mb-16 sm:mb-20">
           <h2
-            className="hero-heading uppercase font-black leading-none tracking-tight text-center"
+            className="hero-heading uppercase font-black leading-none tracking-tight text-center certs-heading"
             style={{ fontSize: "clamp(3rem, 10vw, 120px)" }}
           >
             Certifications
