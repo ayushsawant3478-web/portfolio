@@ -21,6 +21,9 @@ export default function HeroSection() {
     <section
       id="hero-section"
       className="relative w-full h-screen flex flex-col justify-between overflow-hidden bg-[#0C0C0C] px-6 md:px-10 pb-7 sm:pb-8 md:pb-10"
+      style={{
+        paddingTop: 'clamp(60px, 8vh, 80px)'
+      }}
     >
       {/* 0. Lego Image */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pointer-events-none select-none">
@@ -53,23 +56,56 @@ export default function HeroSection() {
         as="nav"
         delay={0}
         y={-20}
-        className="w-full flex justify-between items-center pt-6 md:pt-8 z-30"
       >
-        {navLinks.map((link) => (
-          <button
-            key={link.label}
-            onClick={() => scrollToSection(link.target)}
-            className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200 cursor-pointer"
-            id={`nav-link-${link.label.toLowerCase()}`}
-          >
-            {link.label}
-          </button>
-        ))}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: 'clamp(12px, 2vw, 24px) clamp(20px, 4vw, 40px)',
+          backgroundColor: 'rgba(12, 12, 12, 0.85)',
+          backdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(255,255,255,0.05)',
+          transition: 'background-color 200ms ease',
+        }}>
+          {/* AYUSH Logo */}
+          <span style={{
+            fontFamily: "'Bungee', cursive",
+            fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
+            color: '#D7E2EA',
+            letterSpacing: '0.05em',
+            background: 'linear-gradient(180deg, #646973 0%, #BBCCD7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            userSelect: 'none',
+          }}>
+            AYUSH
+          </span>
+
+          {/* Nav Links */}
+          <div style={{ display: 'flex', gap: 'clamp(12px, 3vw, 32px)', marginLeft: 'auto' }}>
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={() => scrollToSection(link.target)}
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200 cursor-pointer"
+                id={`nav-link-${link.label.toLowerCase()}`}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+        </div>
       </FadeIn>
 
       {/* 2. Hero Heading */}
-      <div className="w-full flex-grow flex items-start justify-center pt-[8vh] relative z-0 pointer-events-none select-none">
-        <div className="overflow-hidden w-full text-center mb-[18vh]">
+      <div className="w-full flex-grow flex items-start justify-center relative z-0 pointer-events-none select-none">
+        <div className="overflow-hidden w-full text-center hero-heading-wrapper">
           <FadeIn delay={0.15} y={40} duration={0.8}>
             <h1 className="hero-heading uppercase font-black tracking-tight leading-none whitespace-nowrap w-full text-[10vw] sm:text-[11vw] md:text-[12vw] lg:text-[13vw]">
               hi, i'm ayush

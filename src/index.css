@@ -32,6 +32,12 @@ html, body {
 
 @media (max-width: 640px) {
 
+  /* HERO — Move heading down to fix gap */
+  .hero-heading-wrapper {
+    margin-top: auto !important;
+    padding-bottom: 180px !important;
+  }
+
   /* HERO — prevent horizontal overflow */
   section {
     overflow-x: hidden;
