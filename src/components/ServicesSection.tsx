@@ -57,10 +57,10 @@ export default function ServicesSection() {
               y={30}
               className="w-full"
             >
-              <div className="w-full py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-10 md:gap-16">
+              <div className="w-full py-8 sm:py-10 md:py-12 border-b border-[rgba(12,12,12,0.15)] flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-10 md:gap-16 skill-item">
                 
                 {/* Large Number Label */}
-                <span className="font-black text-[#0C0C0C] text-[3.2rem] sm:text-[6.5vw] md:text-[8.5vw] lg:text-[140px] leading-none shrink-0 select-none min-w-[70px] sm:min-w-[120px] md:min-w-[150px]">
+                <span className="font-black text-[#0C0C0C] text-[3.2rem] sm:text-[6.5vw] md:text-[8.5vw] lg:text-[140px] leading-none shrink-0 select-none min-w-[70px] sm:min-w-[120px] md:min-w-[150px] skill-number">
                   {item.num}
                 </span>
 

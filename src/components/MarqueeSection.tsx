@@ -90,10 +90,10 @@ export default function MarqueeSection() {
     <section
       ref={sectionRef}
       id="marquee-section"
-      className="relative w-full overflow-hidden bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 flex flex-col gap-3"
+      className="relative w-full overflow-hidden bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 flex flex-col gap-3 marquee-section"
     >
       {/* Row 1 — Moves RIGHT on scroll (translateX(scrollOffset - 200)) */}
-      <div className="w-full overflow-hidden flex">
+      <div className="w-full overflow-hidden flex marquee-row">
         <div
           style={{
             transform: `translateX(${scrollOffset - 200}px)`,
@@ -104,6 +104,7 @@ export default function MarqueeSection() {
           {tripledRow1.map((url, index) => (
             <div
               key={`r1-${index}`}
+              className="marquee-tile"
               style={{
                 width: '420px',
                 height: '270px',
@@ -112,8 +113,7 @@ export default function MarqueeSection() {
                 flexShrink: 0,
                 backgroundColor: '#1a1a1a',
                 position: 'relative',
-              }}
-            >
+              }}>
               <img
                 src={url}
                 alt=""
@@ -137,7 +137,7 @@ export default function MarqueeSection() {
       </div>
 
       {/* Row 2 — Moves LEFT on scroll (translateX(-(scrollOffset - 200))) */}
-      <div className="w-full overflow-hidden flex">
+      <div className="w-full overflow-hidden flex marquee-row">
         <div
           style={{
             transform: `translateX(-${scrollOffset - 200}px)`,
@@ -148,6 +148,7 @@ export default function MarqueeSection() {
           {tripledRow2.map((url, index) => (
             <div
               key={`r2-${index}`}
+              className="marquee-tile"
               style={{
                 width: '420px',
                 height: '270px',
@@ -156,8 +157,7 @@ export default function MarqueeSection() {
                 flexShrink: 0,
                 backgroundColor: '#1a1a1a',
                 position: 'relative',
-              }}
-            >
+              }}>
               <img
                 src={url}
                 alt=""

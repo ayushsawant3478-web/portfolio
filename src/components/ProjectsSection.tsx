@@ -105,10 +105,10 @@ function StickyCard({ project, index, totalCards }: StickyCardProps) {
         className="w-full h-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl overflow-hidden"
       >
         {/* Card Top Row: Number, category label, project name, and action button */}
-        <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-[#D7E2EA]/10">
+        <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 sm:pb-6 border-b border-[#D7E2EA]/10 project-header">
           <div className="flex items-center gap-4 sm:gap-6 text-left">
             {/* Huge Number */}
-            <span className="font-black text-[#D7E2EA] leading-none text-[3rem] sm:text-[4vw] md:text-[5vw] lg:text-[100px] select-none shrink-0">
+            <span className="font-black text-[#D7E2EA] leading-none text-[3rem] sm:text-[4vw] md:text-[5vw] lg:text-[100px] select-none shrink-0 project-number">
               {project.num}
             </span>
 
@@ -125,12 +125,12 @@ function StickyCard({ project, index, totalCards }: StickyCardProps) {
 
           {/* Action Button */}
           <div className="self-start sm:self-center">
-            <LiveProjectButton url={project.url} label={project.btnLabel} />
+            <LiveProjectButton url={project.url} label={project.btnLabel} className="project-button" />
           </div>
         </div>
 
         {/* Card Bottom: Single Full Width Image */}
-        <div style={{
+        <div className="project-image-container" style={{
           width: '100%',
           height: project.name === 'PassKey' ? 'clamp(380px, 45vw, 620px)' : 'clamp(280px, 35vw, 500px)',
           borderRadius: 'clamp(20px, 3vw, 40px)',

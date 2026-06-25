@@ -42,7 +42,7 @@ export default function HeroSection() {
             <img
               src="/lego.png"
               alt="Lego"
-              className="w-[240px] sm:w-[300px] md:w-[370px] lg:w-[440px] h-auto"
+              className="w-[240px] sm:w-[300px] md:w-[370px] lg:w-[440px] h-auto lego-figure"
             />
           </motion.div>
         </FadeIn>
@@ -81,7 +81,7 @@ export default function HeroSection() {
       {/* 3. Bottom bar */}
       <div className="w-full flex justify-between items-end relative z-20">
         <FadeIn delay={0.35} y={20} duration={0.8} className="max-w-[160px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[340px]">
-          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-[0.7rem] sm:text-[0.85rem] md:text-[0.95rem] lg:text-[1.1rem]">
+          <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-[0.7rem] sm:text-[0.85rem] md:text-[0.95rem] lg:text-[1.1rem] hero-tagline">
             a security analyst driven by analysis, protection, and zero tolerance for risk
           </p>
         </FadeIn>

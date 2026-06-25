@@ -26,7 +26,7 @@ export default function AboutSection() {
             src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png"
             alt="Decorative 3D Shield"
             style={filterStyle}
-            className="w-[120px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none"
+            className="w-[120px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none about-icon"
             referrerPolicy="no-referrer"
           />
         </FadeIn>
@@ -39,7 +39,7 @@ export default function AboutSection() {
             src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
             alt="Decorative 3D Lock"
             style={filterStyle}
-            className="w-[100px] sm:w-[140px] md:w-[180px] h-auto object-contain select-none"
+            className="w-[100px] sm:w-[140px] md:w-[180px] h-auto object-contain select-none about-icon"
             referrerPolicy="no-referrer"
           />
         </FadeIn>
@@ -59,7 +59,7 @@ export default function AboutSection() {
               top: '4%',
               right: '1%',
             }}
-            className="object-contain select-none"
+            className="object-contain select-none about-icon"
             referrerPolicy="no-referrer"
           />
         </FadeIn>
@@ -72,7 +72,7 @@ export default function AboutSection() {
             src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
             alt="Decorative 3D Server Node"
             style={filterStyle}
-            className="w-[130px] sm:w-[170px] md:w-[220px] h-auto object-contain select-none"
+            className="w-[130px] sm:w-[170px] md:w-[220px] h-auto object-contain select-none about-icon"
             referrerPolicy="no-referrer"
           />
         </FadeIn>

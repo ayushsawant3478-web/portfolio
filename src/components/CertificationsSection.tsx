@@ -137,7 +137,7 @@ export default function CertificationsSection() {
         <div
           style={{ perspective: '1200px' }}
           onMouseLeave={handleMouseLeave}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 w-full max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 w-full max-w-4xl mx-auto certs-grid"
         >
           {certifications.map((cert, index) => (
             <CertCard

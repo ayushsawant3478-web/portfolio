@@ -5,14 +5,13 @@
   --font-sans: 'Kanit', sans-serif;
 }
 
-html, body, #root {
+html, body {
+  overflow-x: hidden;
   background-color: #0C0C0C;
   color: #D7E2EA;
   font-family: 'Kanit', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  overflow-x: clip;
 }
 
 *, *::before, *::after {
@@ -24,4 +23,102 @@ html, body, #root {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE — screens under 640px
+   Does NOT affect desktop (641px and above)
+   ============================================ */
+
+@media (max-width: 640px) {
+
+  /* HERO — prevent horizontal overflow */
+  section {
+    overflow-x: hidden;
+  }
+
+  /* HERO — scale down heading so it fits */
+  h1 {
+    font-size: clamp(2.8rem, 14vw, 4rem) !important;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* HERO — lego figure smaller on mobile */
+  .lego-figure {
+    width: clamp(160px, 42vw, 220px) !important;
+  }
+
+  /* HERO — tagline text smaller */
+  .hero-tagline {
+    font-size: clamp(0.55rem, 2.8vw, 0.75rem) !important;
+    max-width: 38vw !important;
+  }
+
+  /* MARQUEE — prevent page horizontal scroll */
+  .marquee-section {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+
+  .marquee-row {
+    overflow: hidden !important;
+  }
+
+  .marquee-tile {
+    width: clamp(200px, 55vw, 280px) !important;
+    height: clamp(128px, 35vw, 180px) !important;
+  }
+
+  /* ABOUT — shrink corner icons so they don't overlap heading */
+  .about-icon {
+    width: clamp(55px, 13vw, 90px) !important;
+    opacity: 0.35 !important;
+  }
+
+  /* SKILLS — number size on mobile */
+  .skill-number {
+    font-size: clamp(2.5rem, 10vw, 4rem) !important;
+  }
+
+  /* SKILLS — item layout stack vertically on very small screens */
+  .skill-item {
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  /* PROJECT CARDS — header row wraps */
+  .project-header {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .project-number {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+  }
+
+  .project-button {
+    font-size: 0.65rem !important;
+    padding: 8px 16px !important;
+  }
+
+  /* PROJECT IMAGE — reduce height on mobile */
+  .project-image-container {
+    height: clamp(180px, 50vw, 260px) !important;
+  }
+
+  /* CERTIFICATIONS — single column on mobile */
+  .certs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+}
+
+/* Prevent ALL sections from causing horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
