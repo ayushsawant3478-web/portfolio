@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import FadeIn from "./FadeIn";
 import { LiveProjectButton } from "./Buttons";
@@ -41,12 +41,198 @@ export default function ProjectsSection() {
     },
   ];
 
+  const MobileProjectCarousel = () => {
+    const [current, setCurrent] = useState(0);
+
+    const prev = () => setCurrent((c) => (c === 0 ? projects.length - 1 : c - 1));
+    const next = () => setCurrent((c) => (c === projects.length - 1 ? 0 : c + 1));
+
+    const project = projects[current];
+
+    return (
+      <div
+        className="projects-carousel"
+        style={{
+          display: 'none', // controlled by CSS media query
+          width: '100%',
+          padding: '0 16px',
+        }}
+      >
+        {/* Single card */}
+        <div style={{
+          borderRadius: '28px',
+          border: '2px solid #D7E2EA',
+          backgroundColor: '#0C0C0C',
+          padding: '20px',
+          width: '100%',
+        }}>
+          {/* Card header */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            marginBottom: '16px',
+            flexWrap: 'wrap',
+          }}>
+            <span style={{
+              fontSize: 'clamp(2.5rem, 12vw, 4rem)',
+              fontWeight: 900,
+              color: '#D7E2EA',
+              lineHeight: 1,
+            }}>
+              {project.num}
+            </span>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{
+                fontSize: '0.65rem',
+                color: 'rgba(187,204,215,0.5)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em',
+              }}>
+                {project.category}
+              </span>
+              <span style={{
+                fontSize: 'clamp(1rem, 5vw, 1.4rem)',
+                fontWeight: 700,
+                color: '#D7E2EA',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}>
+                {project.name}
+              </span>
+            </div>
+            <button
+              onClick={() => window.open(project.url, '_blank')}
+              style={{
+                marginLeft: 'auto',
+                padding: '8px 18px',
+                borderRadius: '9999px',
+                border: '2px solid #D7E2EA',
+                background: 'transparent',
+                color: '#D7E2EA',
+                fontSize: '0.65rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              LIVE PROJECT
+            </button>
+          </div>
+
+          {/* Divider */}
+          <div style={{
+            width: '100%',
+            height: '1px',
+            backgroundColor: 'rgba(187,204,215,0.15)',
+            marginBottom: '16px',
+          }} />
+
+          {/* Project image */}
+          <div style={{
+            width: '100%',
+            height: 'clamp(200px, 55vw, 300px)',
+            borderRadius: '20px',
+            overflow: 'hidden',
+            marginBottom: '20px',
+          }}>
+            <img
+              src={project.imgSrc}
+              alt={project.name}
+              style={{
+                width: '100%',
+                height: '100%',
+                ...(project.name === "PassKey" ? {
+                  objectFit: 'contain',
+                  objectPosition: 'top center',
+                  backgroundColor: '#ffffff',
+                  transform: 'none',
+                } : {
+                  objectFit: 'cover',
+                  objectPosition: 'top center',
+                }),
+              }}
+            />
+          </div>
+
+          {/* Arrow navigation */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            {/* Prev arrow */}
+            <button
+              onClick={prev}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '9999px',
+                border: '1.5px solid rgba(187,204,215,0.3)',
+                background: 'transparent',
+                color: '#D7E2EA',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              ←
+            </button>
+
+            {/* Dot indicators */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {projects.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  style={{
+                    width: i === current ? '24px' : '8px',
+                    height: '8px',
+                    borderRadius: '9999px',
+                    backgroundColor: i === current
+                      ? '#D7E2EA'
+                      : 'rgba(187,204,215,0.3)',
+                    transition: 'all 300ms ease',
+                    cursor: 'pointer',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Next arrow */}
+            <button
+              onClick={next}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '9999px',
+                border: '1.5px solid rgba(187,204,215,0.3)',
+                background: 'transparent',
+                color: '#D7E2EA',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="projects-section"
       className="relative w-full bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 pb-28 pt-20 -mt-10 sm:-mt-12 md:-mt-14 z-10 select-none overflow-hidden"
     >
-      <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
+      <div className="w-full max-w-5xl mx-auto flex flex-col">
         {/* Section Heading */}
         <FadeIn delay={0} y={40} className="w-full text-center">
           <h2 className="hero-heading uppercase font-black tracking-tight text-center text-[3rem] sm:text-[8vw] md:text-[10vw] lg:text-[160px] leading-none mb-16 sm:mb-20 md:mb-28">
@@ -54,8 +240,11 @@ export default function ProjectsSection() {
           </h2>
         </FadeIn>
 
+        {/* Mobile Carousel */}
+        <MobileProjectCarousel />
+
         {/* Cards Stack List */}
-        <div className="w-full flex flex-col gap-16 md:gap-24 relative">
+        <div className="w-full flex flex-col gap-16 md:gap-24 relative projects-stack">
           {projects.map((project, index) => (
             <StickyCard
               key={project.num}

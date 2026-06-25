@@ -32,10 +32,28 @@ html, body {
 
 @media (max-width: 640px) {
 
-  /* HERO — Move heading down to fix gap */
+  /* Increase AYUSH logo size on mobile */
+  .ayush-logo {
+    font-size: 1.6rem !important;
+  }
+
+  /* Hide nav links on mobile to save space, keep only logo */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Remove the extra top padding on hero that's causing the gap */
+  .hero-section {
+    padding-top: 0 !important;
+  }
+
+  /* Push heading to sit roughly 55% down the viewport */
   .hero-heading-wrapper {
-    margin-top: auto !important;
-    padding-bottom: 180px !important;
+    position: absolute !important;
+    bottom: 220px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
   }
 
   /* HERO — prevent horizontal overflow */
@@ -118,6 +136,26 @@ html, body {
     grid-template-columns: 1fr !important;
   }
 
+}
+
+/* Project carousel: hide on desktop, show on mobile */
+@media (max-width: 640px) {
+  /* Hide the existing stacked project cards on mobile */
+  .projects-stack {
+    display: none !important;
+  }
+
+  /* Show the mobile carousel instead */
+  .projects-carousel {
+    display: block !important;
+  }
+}
+
+@media (min-width: 641px) {
+  /* Hide carousel on desktop, show stack */
+  .projects-carousel {
+    display: none !important;
+  }
 }
 
 /* Prevent ALL sections from causing horizontal scroll */

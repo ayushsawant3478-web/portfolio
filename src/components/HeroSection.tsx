@@ -20,7 +20,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero-section"
-      className="relative w-full h-screen flex flex-col justify-between overflow-hidden bg-[#0C0C0C] px-6 md:px-10 pb-7 sm:pb-8 md:pb-10"
+      className="relative w-full h-screen flex flex-col justify-between overflow-hidden bg-[#0C0C0C] px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 hero-section"
       style={{
         paddingTop: 'clamp(60px, 8vh, 80px)'
       }}
@@ -73,7 +73,7 @@ export default function HeroSection() {
           transition: 'background-color 200ms ease',
         }}>
           {/* AYUSH Logo */}
-          <span style={{
+          <span className="ayush-logo" style={{
             fontFamily: "'Bungee', cursive",
             fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
             color: '#D7E2EA',
@@ -88,7 +88,7 @@ export default function HeroSection() {
           </span>
 
           {/* Nav Links */}
-          <div style={{ display: 'flex', gap: 'clamp(12px, 3vw, 32px)', marginLeft: 'auto' }}>
+          <div className="nav-links" style={{ display: 'flex', gap: 'clamp(12px, 3vw, 32px)', marginLeft: 'auto' }}>
             {navLinks.map((link) => (
               <button
                 key={link.label}
