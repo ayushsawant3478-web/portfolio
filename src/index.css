@@ -83,6 +83,20 @@ html, body {
     padding-bottom: 16px !important;
   }
 
+  /* Trackify image fit on mobile carousel */
+  .mobile-project-image {
+    object-fit: cover !important;
+    object-position: center top !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .mobile-project-image-container {
+    height: clamp(220px, 60vw, 320px) !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+  }
+
   /* Reduce gap between navbar and heading */
   .hero-heading-wrapper {
     margin-top: 16px !important;

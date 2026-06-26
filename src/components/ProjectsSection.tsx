@@ -130,7 +130,7 @@ export default function ProjectsSection() {
           }} />
 
           {/* Project image */}
-          <div style={{
+          <div className="mobile-project-image-container" style={{
             width: '100%',
             height: 'clamp(200px, 55vw, 300px)',
             borderRadius: '20px',
@@ -140,6 +140,7 @@ export default function ProjectsSection() {
             <img
               src={project.imgSrc}
               alt={project.name}
+              className="mobile-project-image"
               style={{
                 width: '100%',
                 height: '100%',

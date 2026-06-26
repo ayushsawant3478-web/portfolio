@@ -73,17 +73,22 @@ export default function HeroSection() {
           transition: 'background-color 200ms ease',
         }}>
           {/* AYUSH Logo */}
-          <span className="ayush-logo" style={{
-            fontFamily: "'Bungee', cursive",
-            fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
-            color: '#D7E2EA',
-            letterSpacing: '0.05em',
-            background: 'linear-gradient(180deg, #646973 0%, #BBCCD7 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            userSelect: 'none',
-          }}>
+          <span 
+            className="ayush-logo" 
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            style={{
+              fontFamily: "'Press Start 2P', cursive",
+              fontSize: 'clamp(0.7rem, 1.5vw, 1rem)',
+              background: 'linear-gradient(180deg, #646973 0%, #BBCCD7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              letterSpacing: '0.05em',
+              cursor: 'pointer',
+              userSelect: 'none',
+            }}>
             AYUSH
           </span>
 
