@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import FadeIn from "./FadeIn";
 
 interface Certification {
@@ -117,10 +117,178 @@ export default function CertificationsSection() {
     });
   };
 
+  const MobileCertCarousel = () => {
+    const [current, setCurrent] = useState(0);
+
+    const prev = () => setCurrent((c) => (c === 0 ? certifications.length - 1 : c - 1));
+    const next = () => setCurrent((c) => (c === certifications.length - 1 ? 0 : c + 1));
+
+    const cert = certifications[current];
+
+    return (
+      <div
+        className="certs-carousel"
+        style={{
+          display: 'none', // controlled by CSS media query
+          width: '100%',
+          padding: '0 16px',
+        }}
+      >
+        {/* Single card */}
+        <div style={{
+          borderRadius: '28px',
+          border: '2px solid #D7E2EA',
+          backgroundColor: '#0C0C0C',
+          padding: '20px',
+          width: '100%',
+        }}>
+          {/* Top Row: Issuer + Year */}
+          <div className="flex justify-between items-center mb-4">
+            <span style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              border: '1px solid rgba(99, 102, 241, 0.2)',
+              borderRadius: '9999px',
+              padding: '2px 10px',
+              fontSize: '0.7rem',
+              color: '#818cf8',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
+            }}>
+              {cert.issuer}
+            </span>
+            <span style={{
+              color: 'rgba(187, 204, 215, 0.4)',
+              fontSize: '0.75rem'
+            }}>
+              {cert.year}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 style={{
+            color: '#D7E2EA',
+            fontWeight: 600,
+            fontSize: 'clamp(1rem, 5vw, 1.4rem)',
+            lineHeight: 1.3,
+            marginBottom: '16px'
+          }}>
+            {cert.title}
+          </h3>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {cert.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '9999px',
+                  padding: '2px 8px',
+                  fontSize: '0.65rem',
+                  color: 'rgba(187, 204, 215, 0.6)'
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Verify Link (if exists) */}
+          {cert.verifyUrl && (
+            <div className="flex justify-end mb-6">
+              <a
+                href={cert.verifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'rgba(99, 102, 241, 0.7)',
+                  fontSize: '0.75rem',
+                  textDecoration: 'none'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = '#818cf8'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(99, 102, 241, 0.7)'; }}
+              >
+                Verify ↗
+              </a>
+            </div>
+          )}
+
+          {/* Arrow navigation */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+            {/* Prev arrow */}
+            <button
+              onClick={prev}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '9999px',
+                border: '1.5px solid rgba(187,204,215,0.3)',
+                background: 'transparent',
+                color: '#D7E2EA',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              ←
+            </button>
+
+            {/* Dot indicators */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {certifications.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  style={{
+                    width: i === current ? '24px' : '8px',
+                    height: '8px',
+                    borderRadius: '9999px',
+                    backgroundColor: i === current
+                      ? '#D7E2EA'
+                      : 'rgba(187,204,215,0.3)',
+                    transition: 'all 300ms ease',
+                    cursor: 'pointer',
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Next arrow */}
+            <button
+              onClick={next}
+              style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '9999px',
+                border: '1.5px solid rgba(187,204,215,0.3)',
+                background: 'transparent',
+                color: '#D7E2EA',
+                fontSize: '1.2rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="certifications-section"
-      className="relative w-full min-h-screen bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20"
+      className="relative w-full min-h-screen bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 certs-section"
     >
       <div className="w-full max-w-4xl mx-auto">
         {/* Section Heading */}
@@ -133,7 +301,10 @@ export default function CertificationsSection() {
           </h2>
         </FadeIn>
 
-        {/* Certifications Grid */}
+        {/* Mobile Carousel */}
+        <MobileCertCarousel />
+
+        {/* Certifications Grid (Desktop) */}
         <div
           style={{ perspective: '1200px' }}
           onMouseLeave={handleMouseLeave}

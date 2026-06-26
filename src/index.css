@@ -25,6 +25,21 @@ html, body {
   background-clip: text;
 }
 
+/* Typing cursor blink on heading */
+.hero-heading-wrapper h1::after {
+  content: '|';
+  display: inline-block;
+  color: #BBCCD7;
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* ============================================
    MOBILE RESPONSIVE — screens under 640px
    Does NOT affect desktop (641px and above)
@@ -47,16 +62,32 @@ html, body {
     overflow-x: hidden;
   }
 
-  /* HERO — scale down heading so it fits */
-  h1 {
-    font-size: clamp(2.8rem, 14vw, 4rem) !important;
-    white-space: nowrap;
-    overflow: hidden;
+  /* Bigger heading on mobile */
+  .hero-heading-wrapper h1 {
+    font-size: 17vw !important;
+    white-space: normal;
+    line-height: 1;
+    overflow-wrap: break-word;
   }
 
-  /* HERO — lego figure smaller on mobile */
+  /* Move lego figure higher on mobile */
+  .lego-wrapper {
+    bottom: 120px !important;
+  }
   .lego-figure {
-    width: clamp(160px, 42vw, 220px) !important;
+    width: 260px !important;
+  }
+
+  /* Push bottom bar up so it doesn't overlap lego feet */
+  .hero-bottom-bar {
+    padding-bottom: 16px !important;
+  }
+
+  /* Reduce gap between navbar and heading */
+  .hero-heading-wrapper {
+    margin-top: 16px !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
   }
 
   /* HERO — tagline text smaller */
@@ -117,36 +148,30 @@ html, body {
     height: clamp(180px, 50vw, 260px) !important;
   }
 
-  /* CERTIFICATIONS — horizontal scroll on mobile instead of long vertical list */
-  .certs-grid { 
-     display: flex !important; 
-     flex-direction: row !important; 
-     overflow-x: auto !important; 
-     overflow-y: hidden !important; 
-     scroll-snap-type: x mandatory !important; 
-     gap: 12px !important; 
-     padding-bottom: 16px !important; 
-     /* Hide scrollbar but keep scrollable */ 
-     scrollbar-width: none !important; 
-     -ms-overflow-style: none !important; 
-   } 
- 
-   .certs-grid::-webkit-scrollbar { 
-     display: none !important; 
-   } 
- 
-   /* Each cert card becomes a fixed-width snap point */ 
-   .certs-grid > * { 
-     flex-shrink: 0 !important; 
-     width: 80vw !important; 
-     scroll-snap-align: start !important; 
-   } 
- 
-   /* Shrink cert heading on mobile */ 
-   .certs-heading { 
-     font-size: clamp(2.5rem, 14vw, 4rem) !important; 
-     margin-bottom: 24px !important; 
-   }
+  /* CERTIFICATIONS — show carousel, hide grid on mobile */
+  .certs-grid {
+    display: none !important;
+  }
+
+  .certs-carousel {
+    display: block !important;
+  }
+
+  /* Scale down CERTIFICATIONS heading so it fits */
+  .certs-heading {
+    font-size: clamp(2rem, 11vw, 3rem) !important;
+    margin-bottom: 20px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Fix certifications section padding — remove excess */
+  .certs-section {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+    min-height: unset !important;
+  }
 
 }
 
@@ -164,9 +189,32 @@ html, body {
 }
 
 @media (min-width: 641px) {
-  /* Hide carousel on desktop, show stack */
+  /* Hide carousels on desktop, show stack/grid */
   .projects-carousel {
     display: none !important;
+  }
+  .certs-carousel {
+    display: none !important;
+  }
+
+  /* Restore desktop lego position — undo mobile fix above 640px */
+  .lego-wrapper {
+    bottom: 0 !important;
+  }
+  .lego-figure {
+    bottom: 0 !important;
+    width: clamp(200px, 32vw, 520px) !important;
+  }
+
+  .hero-heading-wrapper {
+    margin-top: 0 !important;
+    position: relative !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Restore desktop bottom bar padding */
+  .hero-bottom-bar {
+    padding-bottom: clamp(28px, 3vw, 40px) !important;
   }
 }
 

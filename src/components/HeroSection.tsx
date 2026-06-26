@@ -26,7 +26,7 @@ export default function HeroSection() {
       }}
     >
       {/* 0. Lego Image */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10 pointer-events-none select-none">
+      <div className="absolute left-1/2 -translate-x-1/2 z-10 pointer-events-none select-none lego-wrapper">
         <FadeIn delay={0.2} y={200} duration={1}>
           <motion.div
             animate={{
@@ -115,7 +115,7 @@ export default function HeroSection() {
       </div>
 
       {/* 3. Bottom bar */}
-      <div className="w-full flex justify-between items-end relative z-20">
+      <div className="w-full flex justify-between items-end relative z-20 hero-bottom-bar">
         <FadeIn delay={0.35} y={20} duration={0.8} className="max-w-[160px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[340px]">
           <p className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug text-[0.7rem] sm:text-[0.85rem] md:text-[0.95rem] lg:text-[1.1rem] hero-tagline">
             a security analyst driven by analysis, protection, and zero tolerance for risk
